@@ -1,0 +1,38 @@
+{% extends 'unit_converter/layout.html' %}
+{% load static %}
+{% block script %}
+    <script type="module" src="{% static 'unit_converter/weight.js' %}"></script>
+{% endblock %}
+{% block title %}Weight converter{% endblock %}
+{% block body %}
+    <form id="weight-converter">
+        {% csrf_token %}
+        <div class="box">
+            <label for="weight">Enter the weight to convert</label>
+            <input type="number" step="0.01" id="weight" />
+        </div>
+        <div class="box">
+            <label for="from-weight">Unit to convert from</label>
+            <select id="from-weight">
+                <option value="mg">Milligram</option>
+                <option value="g">Gram</option>
+                <option value="kg">Kilogram</option>
+                <option value="oz">Ounce</option>
+                <option value="lbs">Pound</option>
+            </select>
+        </div>
+        <div class="box">
+            <label for="to-weight">Unit to convert to</label>
+            <select id="to-weight">
+                <option value="mg">Milligram</option>
+                <option value="g">Gram</option>
+                <option value="kg">Kilogram</option>
+                <option value="oz">Ounce</option>
+                <option value="lbs">Pound</option>
+            </select>
+        </div>
+        <div class="box">
+            <button type="submit">Convert</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'blog/register.html' %}
+{% block title %}Login{% endblock %}
+{% block name %}<h1>Login</h1>{% endblock %}
+{% block register_login %}
+    <a href="{% url 'blog:register' %}">Don't have an account?</a>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'blog/new.html' %}
+{% block title %}Update article{% endblock %}
+{% block error_message %}
+    {% for message in messages %}<div class="{{ message.tags }}">{{ message }}</div>{% endfor %}
+{% endblock %}
+{% block name %}<h1>Update article</h1>{% endblock %}
+{% block content %}{{ content }}{% endblock %}
+{% block article_title %}{{ title }}{% endblock %}

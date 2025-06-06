@@ -1,0 +1,23 @@
+{% extends 'blog/home.html' %}
+{% block title %}Admin{% endblock %}
+{% block error_message %}
+    {% for message in messages %}<div class="{{ message.tags }}">{{ message }}</div>{% endfor %}
+{% endblock %}
+{% block name %}
+    <div class="add">
+        <h1>Personal Blog</h1>
+        <a href="{% url 'blog:new' %}"><strong>+ Add</strong></a>
+    </div>
+{% endblock %}
+{% block home_admin %}
+    {% if request.user.id == article.author %}
+        <div class="edit-delete">
+            <a class="gray" href="{% url 'blog:edit' article.id %}">Edit</a>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="article-id" value="{{ article.id }}" />
+                <button class="gray" type="submit">Delete</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

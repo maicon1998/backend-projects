@@ -1,0 +1,34 @@
+{% extends 'unit_converter/layout.html' %}
+{% load static %}
+{% block script %}
+    <script type="module" src="{% static 'unit_converter/temperature.js' %}"></script>
+{% endblock %}
+{% block title %}Temperature converter{% endblock %}
+{% block body %}
+    <form id="temperature-converter">
+        {% csrf_token %}
+        <div class="box">
+            <label for="temperature">Enter the temperature to convert</label>
+            <input type="number" step="0.01" id="temperature" />
+        </div>
+        <div class="box">
+            <label for="from-temperature">Unit to convert from</label>
+            <select id="from-temperature">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+            </select>
+        </div>
+        <div class="box">
+            <label for="to-temperature">Unit to convert to</label>
+            <select id="to-temperature">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+            </select>
+        </div>
+        <div class="box">
+            <button type="submit">Convert</button>
+        </div>
+    </form>
+{% endblock %}

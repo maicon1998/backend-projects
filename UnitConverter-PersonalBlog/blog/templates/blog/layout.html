@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static 'blog/styles.css' %}" />
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+            <nav>
+                <a href="{% url 'blog:home' %}">Home</a>
+                <a href="{% url 'blog:admin' %}">Admin</a>
+                <a href="{% url 'blog:logout' %}">Logout</a>
+            </nav>
+        {% endif %}
+        {% block body %}{% endblock %}
+    </body>
+</html>

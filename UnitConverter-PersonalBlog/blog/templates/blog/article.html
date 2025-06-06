@@ -1,0 +1,11 @@
+{% extends 'blog/layout.html' %}
+{% block title %}Article{% endblock %}
+{% block body %}
+    <div class="container">
+        {% for article in article %}
+            <h1>{{ article.title }}</h1>
+            <div class="gray">{{ article.published }}</div>
+            <div class="content">{{ article.content }}</div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unit converter</title>
+        <link rel="stylesheet" href="{% static 'unit_converter/styles.css' %}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="module" src="{% static 'unit_converter/util.js' %}"></script>
+        {% block script %}{% endblock %}
+    </head>
+    <body>
+        <h1>
+            {% block title %}{% endblock %}
+        </h1>
+        <nav>
+            <a href="{% url 'unit_converter:length' %}">Length</a>
+            <a href="{% url 'unit_converter:weight' %}">Weight</a>
+            <a href="{% url 'unit_converter:temperature' %}">Temperature</a>
+        </nav>
+        {% block body %}{% endblock %}
+        <div id="result">
+            <h3 id="description"></h3>
+            <button type="button" id="reset">Reset</button>
+        </div>
+    </body>
+</html>

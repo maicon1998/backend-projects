@@ -1,0 +1,20 @@
+{% extends 'blog/layout.html' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+    <div class="container">
+        {% block error_message %}{% endblock %}
+        {% block name %}<h1 class="box">Personal Blog</h1>{% endblock %}
+        {% if articles %}
+            {% for article in articles %}
+                <div class="article">
+                    <a href="{% url 'blog:article' article.id %}">
+                        <strong>{{ article.title }}</strong>
+                    </a>
+                    {% block home_admin %}<div class="gray">{{ article.published }}</div>{% endblock %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>There are no articles published</p>
+        {% endif %}
+    </div>
+{% endblock %}

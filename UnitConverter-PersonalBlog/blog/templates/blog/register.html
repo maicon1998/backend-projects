@@ -1,0 +1,29 @@
+{% extends 'blog/layout.html' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+    <div class="container">
+        {% for message in messages %}<div class="{{ message.tags }}">{{ message }}</div>{% endfor %}
+        <div class="box">
+            {% block name %}<h1>Register</h1>{% endblock %}
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="box">
+                <label for="username">Username</label>
+                <input type="text" name="username" />
+            </div>
+            <div class="box">
+                <label for="password">Password</label>
+                <input type="password" name="password" />
+            </div>
+            <div class="box">
+                <button type="submit">Confirm</button>
+            </div>
+        </form>
+        <div class="box">
+            {% block register_login %}
+                <a href="{% url 'blog:login' %}">Already have an account?</a>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

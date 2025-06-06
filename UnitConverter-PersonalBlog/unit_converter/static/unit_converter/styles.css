@@ -1,0 +1,55 @@
+:root {
+  --flex: flex;
+  --column: column;
+  --center: center;
+  --none: none;
+  --black: black;
+  --zero: 0;
+  --halfRem: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: var(--zero);
+  margin: 0.25rem;
+}
+
+body {
+  margin: var(--zero);
+
+  font-family: cursive, sans-serif;
+  font-size: clamp(1rem, 0.5737rem + 2.8419vw, 1.75rem);
+  text-align: var(--center);
+}
+
+a {
+  text-decoration: var(--none);
+  color: var(--black);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.box {
+  display: var(--flex);
+  flex-direction: var(--column);
+  align-items: var(--center);
+}
+
+input,
+button,
+select {
+  border: 2px solid var(--black);
+  border-radius: var(--halfRem);
+
+  padding: var(--halfRem);
+
+  background-color: white;
+}
+
+#result {
+  display: var(--none);
+  flex-direction: var(--column);
+  align-items: var(--center);
+}

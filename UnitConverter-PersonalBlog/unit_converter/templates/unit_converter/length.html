@@ -1,0 +1,44 @@
+{% extends 'unit_converter/layout.html' %}
+{% load static %}
+{% block script %}
+    <script type="module" src="{% static 'unit_converter/length.js' %}"></script>
+{% endblock %}
+{% block title %}Length converter{% endblock %}
+{% block body %}
+    <form id="length-converter">
+        {% csrf_token %}
+        <div class="box">
+            <label for="length">Enter the length to convert</label>
+            <input type="number" step="0.01" id="length" />
+        </div>
+        <div class="box">
+            <label for="from-length">Unit to convert from</label>
+            <select id="from-length">
+                <option value="mm">Millimeter</option>
+                <option value="cm">Centimeter</option>
+                <option value="m">Meter</option>
+                <option value="km">Kilometer</option>
+                <option value="in">Inch</option>
+                <option value="ft">Foot</option>
+                <option value="yd">Yard</option>
+                <option value="mi">Mile</option>
+            </select>
+        </div>
+        <div class="box">
+            <label for="to-length">Unit to convert to</label>
+            <select id="to-length">
+                <option value="mm">Millimeter</option>
+                <option value="cm">Centimeter</option>
+                <option value="m">Meter</option>
+                <option value="km">Kilometer</option>
+                <option value="in">Inch</option>
+                <option value="ft">Foot</option>
+                <option value="yd">Yard</option>
+                <option value="mi">Mile</option>
+            </select>
+        </div>
+        <div class="box">
+            <button type="submit">Convert</button>
+        </div>
+    </form>
+{% endblock %}

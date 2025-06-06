@@ -1,0 +1,133 @@
+:root {
+  --flex: flex;
+  --column: column;
+  --center: center;
+  --oneRem: 1rem;
+  --halfRem: 0.5rem;
+  --border: 2px solid black;
+  --none: none;
+  --zero: 0;
+  --width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: var(--zero);
+  margin: var(--zero);
+}
+
+body {
+  font-family: cursive, sans-serif;
+  font-size: clamp(var(--oneRem), 0.5737rem + 2.8419vw, 1.5rem);
+}
+
+.container {
+  display: var(--flex);
+  flex-direction: var(--column);
+
+  min-height: 100dvh;
+  max-width: 50dvw;
+
+  border: var(--border);
+  border-radius: var(--halfRem);
+
+  padding: min(var(--oneRem), 8%);
+  margin: var(--zero) auto;
+}
+
+.box {
+  margin: var(--halfRem);
+}
+
+input {
+  border: var(--border);
+  border-radius: var(--halfRem);
+  padding: var(--halfRem);
+  width: var(--width);
+}
+
+button {
+  background-color: white;
+  border: var(--border);
+  border-radius: var(--halfRem);
+  padding: var(--halfRem);
+}
+
+.success {
+  text-align: var(--center);
+  background-color: green;
+  color: white;
+}
+
+.error {
+  text-align: var(--center);
+  background-color: red;
+  color: black;
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    max-width: 99dvw;
+  }
+}
+
+nav {
+  text-align: var(--center);
+}
+
+a {
+  text-decoration: var(--none);
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.article {
+  padding: var(--halfRem);
+  width: var(--width);
+  display: var(--flex);
+  justify-content: space-between;
+  align-items: var(--center);
+}
+
+.article button {
+  border: var(--none);
+  font-family: cursive, sans-serif;
+  font-size: clamp(var(--oneRem), 0.5737rem + 2.8419vw, 1.5rem);
+  padding: var(--zero);
+  margin-left: var(--oneRem);
+}
+
+.article button:hover {
+  text-decoration: underline;
+}
+
+.content {
+  word-break: break-all;
+}
+
+.box > textarea {
+  resize: var(--none);
+  border: var(--border);
+  border-radius: var(--halfRem);
+  padding: var(--halfRem);
+  width: var(--width);
+  height: 20rem;
+}
+
+.add {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: var(--center);
+  margin: var(--halfRem);
+}
+
+.gray {
+  color: gray;
+}
+
+.edit-delete {
+  display: inline-flex;
+}

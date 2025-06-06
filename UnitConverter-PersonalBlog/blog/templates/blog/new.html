@@ -1,0 +1,32 @@
+{% extends 'blog/layout.html' %}
+{% block title %}New article{% endblock %}
+{% block body %}
+    <div class="container">
+        {% block error_message %}
+            {% for message in messages %}<div class="{{ message.tags }}">{{ message }}</div>{% endfor %}
+        {% endblock %}
+        <div class="box">
+            {% block name %}<h1>New article</h1>{% endblock %}
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="box">
+                <input type="text"
+                       name="title"
+                       placeholder="Title"
+                       required
+                       value="{% block article_title %}{% endblock %}">
+            </div>
+            <div class="box">
+                <input type="date" name="date" placeholder="Publishing date" required />
+            </div>
+            <div class="box">
+                <textarea name="content" placeholder="content" required>{% block content %}{% endblock %}</textarea>
+            </div>
+            <div class="box">
+                <button type="submit">Publish</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
