@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather</title>
+        <link rel="stylesheet" href="{% static 'weatherAPI/styles.css' %}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="box">
+            {% for message in messages %}<div class="{{ message.tags }}">{{ message }}</div>{% endfor %}
+            <h1>Weather</h1>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="location" placeholder="city" />
+                <button type="submit">search</button>
+            </form>
+        </div>
+        {% if content is not False %}
+            <div class="box-1">
+                <div class="current">
+                    <h3>{{ city|upper }}</h3>
+                    <p>Temperature: {{ current.temperature_2m }}°C</p>
+                    <p>Feels like: {{ current.apparent_temperature }}°C</p>
+                    <p>Wind: {{ current.wind_speed_10m }} m/s</p>
+                    <p>Pressure: {{ current.pressure_msl }} hPa</p>
+                    <p>Humidity: {{ current.relative_humidity_2m }}%</p>
+                    <p>Precipitation: {{ current.precipitation }} mm</p>
+                </div>
+                <div class="daily">
+                    <h3>Daily</h3>
+                    {% for time, temperature_max, temperature_min, precipitation in daily %}
+                        <div>
+                            <p>{{ time }} - {{ temperature_max }}/{{ temperature_min }}°C - P: {{ precipitation }}%</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="hourly">
+                <h3>Hourly</h3>
+                <div>
+                    {% for time, temperature, precipitation in hourly %}
+                        <p>{{ time }} {{ temperature }}°C P: {{ precipitation }}%</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </body>
+</html>
